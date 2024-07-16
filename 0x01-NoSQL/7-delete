@@ -1,0 +1,5 @@
+// Delete all documents with name="Holberton school" in the collection school
+var result = db.school.deleteMany({ name: "Holberton school" })
+
+// Print the number of documents deleted
+print(result.deletedCount + " document(s) deleted")
