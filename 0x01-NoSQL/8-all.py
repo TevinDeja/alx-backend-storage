@@ -17,13 +17,3 @@ def list_all(mongo_collection: Collection) -> List[dict]:
                     Returns an empty list if no documents are found.
     """
     return list(mongo_collection.find())
-
-
-if __name__ == "__main__":
-    # Example usage (not executed when imported)
-    from pymongo import MongoClient
-    client = MongoClient('mongodb://localhost:27017/')
-    db = client.my_database
-    collection = db.my_collection
-    documents = list_all(collection)
-    print(documents)
