@@ -1,19 +1,16 @@
 #!/usr/bin/env python3
-"""Module for listing all documents in a MongoDB collection."""
-
-from pymongo.collection import Collection
-from typing import List
+"""Module for retrieving documents from a MongoDB collection."""
 
 
-def list_all(mongo_collection: Collection) -> List[dict]:
+def list_all(mongo_collection):
     """
-    List all documents in a MongoDB collection.
+    Retrieve all documents from a MongoDB collection.
 
     Args:
-        mongo_collection (Collection): The pymongo collection object.
+        mongo_collection (Collection): The pymongo collection object to query.
 
     Returns:
-        List[dict]: A list of all documents in the collection.
-                    Returns an empty list if no documents are found.
+        List[dict]: A list containing all documents in the collection.
+                    If the collection is empty, returns an empty list.
     """
-    return list(mongo_collection.find())
+    return [documents for documents in mongo_collection.find()]
