@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Module containing the Cache class for Redis operations.
+Module containing the Cache class for Redis operations and related functions.
 """
 
 import redis
@@ -150,3 +150,13 @@ def replay(method: Callable):
         input_str = input_args.decode('utf-8')
         output_str = output.decode('utf-8')
         print(f"{method_name}(*{input_str}) -> {output_str}")
+
+
+if __name__ == "__main__":
+    cache = Cache()
+    
+    cache.store("foo")
+    cache.store("bar")
+    cache.store(42)
+    
+    replay(cache.store)
