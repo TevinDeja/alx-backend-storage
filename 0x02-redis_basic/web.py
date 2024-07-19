@@ -31,7 +31,6 @@ def data_cacher(method)
         redis_store.incr(count_key)
         redis_store.set(cached_key, result)
         redis_store.expire(cached_key, 10)
-        
         return result
     return wrapper
 
@@ -47,4 +46,5 @@ def get_page(url: str) -> str:
     Returns:
         str: The HTML content of the URL.
     """
-    return requests.get(url).text
+    res = requests.get(url)
+    return res.text
