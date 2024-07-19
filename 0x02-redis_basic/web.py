@@ -10,7 +10,7 @@ from functools import wraps
 redis_store = redis.Redis()
 
 
-def data_cacher(method):
+def count_url(method):
     """
     Decorator to cache the result of a function and track how many times it's called.
     """
@@ -20,8 +20,7 @@ def data_cacher(method):
         The wrapper function for caching the output and tracking access.
         """
         cached_key = "cached:" + url
-        cached_result = redis_store.get(cached_key)
-        
+        cached_result = redis_store.get(cached_key)        
         if cached_result:
             return cached_result.decode('utf-8')
         
@@ -35,7 +34,7 @@ def data_cacher(method):
     return wrapper
 
 
-@data_cacher
+@count_url
 def get_page(url: str) -> str:
     """
     Obtain the HTML content of a particular URL.
