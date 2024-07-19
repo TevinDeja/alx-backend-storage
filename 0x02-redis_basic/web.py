@@ -46,18 +46,3 @@ def get_page(url: str) -> str:
         str: The HTML content of the URL.
     """
     return requests.get(url).text
-
-
-if __name__ == "__main__":
-    url = "http://slowwly.robertomurray.co.uk/delay/1000/url/http://www.example.com"
-    
-    print("Fetching page for the first time (should be slow):")
-    content = get_page(url)
-    print(f"Content length: {len(content)}")
-    
-    print("\nFetching page for the second time (should be fast, cached):")
-    content = get_page(url)
-    print(f"Content length: {len(content)}")
-    
-    count = redis_store.get(f"count:{url}")
-    print(f"\nThe URL was accessed {count.decode('utf-8')} times.")
