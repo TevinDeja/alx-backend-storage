@@ -10,12 +10,12 @@ from functools import wraps
 redis_store = redis.Redis()
 
 
-def data_cacher(method)
+def data_cacher(method):
     """
     Decorator to cache the result of a function and track how many times it's called.
     """
     @wraps(method)
-    def wrapper(url)
+    def wrapper(url):
         """
         The wrapper function for caching the output and tracking access.
         """
